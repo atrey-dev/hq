@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: "Quicksand", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji";
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* Disable overscroll (bounce/scroll chaining) across the app */
+html, body {
+  overscroll-behavior: none;
+}
+
+/* Optional utility classes if you want to target fonts explicitly */
+.quicksand-default {
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.noto-color-emoji-regular {
+  font-family: "Noto Color Emoji", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Cursor blink for TextType component */
+@keyframes type-cursor-blink { 0%, 100% { opacity: 1 } 50% { opacity: 0 } }
+.type-cursor { animation: type-cursor-blink linear infinite; }
+
+/* Underline that exists by default, retracts smoothly on hover, returns on leave */
+.link-underline { position: relative; text-decoration: none; }
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 1px; background-color: currentColor;
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: transform 180ms ease;
+}
+.link-underline:hover::after, .link-underline:focus-visible::after { transform: scaleX(0); }
