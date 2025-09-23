@@ -33,13 +33,13 @@ export default function Home() {
 
       <main id="home" className="flex-1 flex flex-col items-center justify-center gap-4 px-6 text-center">
         <Lottie src="/champagne-flutes-hover-pinch.json" width={35} height={35} playOnHover autoplay={false} />
-        <h1 className="text-lg sm:text-xl md:text-2xl font-medium tracking-tight">
+        <h1 className="text-lg font-medium tracking-tight">
           Builders ready to bring crazy ideas to life.
         </h1>
-        <p className="text-sm sm:text-base text-[#B6B6B6]">
+        <p className="text-sm text-[#B6B6B6]">
           We have expertise in{' '}
           <TextType
-            className="text-sm sm:text-base text-[#B6B6B6]"
+            className="text-sm text-[#B6B6B6]"
             text={["Game Dev", "Web Apps", "App Dev", "Designing", "Bots", "AI Apps", "Landing Pages", "Automation", "UI/UX"]}
             typingSpeed={50}
             pauseDuration={1500}
@@ -48,16 +48,16 @@ export default function Home() {
           />
         </p>
 
-        <section className="w-full max-w-3xl mt-2">
+        <section className="w-full max-w-xl mt-2">
           <Marquee className="py-1">
             <MarqueeFade side="left" />
             <MarqueeContent speed={40} pauseOnHover autoFill ariaLabel="Technologies we use">
               {logos.map((logo, idx) => (
                 <MarqueeItem key={idx} className="flex flex-col items-center gap-2">
-                  <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12">
-                    <Image src={logo.src} alt={logo.alt} width={25} height={25} className="block object-contain" />
+                  <div className="flex items-end justify-center w-10 h-10">
+                    <Image src={logo.src} alt={logo.alt} width={23} height={23} className="block object-contain" />
                   </div>
-                  <span className="text-xs opacity-75">{logo.alt}</span>
+                  <span className="text-[10px] opacity-75">{logo.alt}</span>
                 </MarqueeItem>
               ))}
             </MarqueeContent>
@@ -65,10 +65,10 @@ export default function Home() {
           </Marquee>
         </section>
 
-        <div className="mt-6 flex items-center gap-6">
+        <div className="mt-20 flex items-center gap-6">
           <a
             href="mailto:build@atrey.dev"
-            className="text-sm sm:text-base px-1 py-0.5 text-stone-400 link-underline"
+            className="text-sm px-1 py-0.5 text-stone-400 underline"
           >
             build@atrey.dev
           </a>
@@ -76,7 +76,7 @@ export default function Home() {
             href="https://wa.me/918115605720"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm sm:text-base px-1 py-0.5 text-stone-400 link-underline"
+            className="text-sm px-1 py-0.5 text-stone-400 underline"
           >
             wa.me/8115605720
           </a>
