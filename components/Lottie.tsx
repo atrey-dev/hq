@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import type { AnimationItem } from 'lottie-web';
 
 type LottieProps = {
   src: string; // path to lottie json (can be in public)
@@ -22,8 +23,8 @@ export default function Lottie({
   className,
 }: LottieProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  // Using unknown to avoid any, instance shape is provided by lottie-web at runtime
-  const animRef = useRef<unknown | null>(null);
+  type AnimationControls = Pick<AnimationItem, 'destroy' | 'goToAndPlay' | 'stop'>;
+  const animRef = useRef<AnimationControls | null>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -39,9 +40,9 @@ export default function Lottie({
         autoplay: playOnHover ? false : autoplay,
         path: src,
       });
-      animRef.current = instance;
+      animRef.current = instance as unknown as AnimationControls;
       cleanup = () => {
-        (instance as any)?.destroy();
+        instance?.destroy();
         animRef.current = null;
       };
     })();
@@ -52,10 +53,10 @@ export default function Lottie({
   }, [src, loop, autoplay, playOnHover]);
 
   const handleMouseEnter = () => {
-    if (playOnHover) (animRef.current as any)?.goToAndPlay(0, true);
+    if (playOnHover) animRef.current?.goToAndPlay(0, true);
   };
   const handleMouseLeave = () => {
-    if (playOnHover) (animRef.current as any)?.stop();
+    if (playOnHover) animRef.current?.stop();
   };
 
   return (

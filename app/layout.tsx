@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-page-custom-font */
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -46,13 +46,16 @@ export const metadata: Metadata = {
   verification: {
     google: "vfl_Z9jHpXJBVtYEGNKNsxdFq_9HMWyKZNYF8ZuH4WE",
   },
-  themeColor: "#ff8c00",
   alternates: {
     canonical: "https://atrey.dev",
   },
   icons: {
     icon: "/penguine.png",
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#ff8c00",
 };
 
 export default function RootLayout({
